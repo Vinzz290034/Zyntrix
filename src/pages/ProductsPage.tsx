@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCartStore, Product } from '../store/cartStore';
 
 const products: Product[] = [
@@ -58,6 +59,7 @@ interface ProductsPageProps {
 }
 
 export default function ProductsPage({ showCart, setShowCart }: ProductsPageProps) {
+  const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const { cart, addItem, removeItem, updateQuantity, getTotal } = useCartStore();
 
@@ -229,7 +231,12 @@ export default function ProductsPage({ showCart, setShowCart }: ProductsPageProp
                       ₱{getTotal().toLocaleString()}
                     </span>
                   </div>
-                  <button className="w-full bg-gradient-to-r from-[#6A0DAD] to-[#1E90FF] text-white py-3 rounded-lg font-semibold hover:scale-105 transform transition">
+                  <button 
+                    onClick={() => {
+                      setShowCart(false);
+                      navigate('/checkout');
+                    }}
+                    className="w-full bg-gradient-to-r from-[#6A0DAD] to-[#1E90FF] text-white py-3 rounded-lg font-semibold hover:scale-105 transform transition">
                     Checkout
                   </button>
                 </div>
