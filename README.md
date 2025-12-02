@@ -9,5 +9,4 @@
 - **State Management**: Zustand 4.4.7 with persist middleware
 - **Styling**: Tailwind CSS 3.4.17 via PostCSS
 - **Build Tool**: Vite 7.0.0
-- **Currency**: Philippine Peso (₱)
 - **Cart Persistence**: Zustand with localStorage
